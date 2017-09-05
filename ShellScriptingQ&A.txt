@@ -1,0 +1,72 @@
+Shell script
+
+[vb237y@fldh032 shell_script]$ ls -1t | head -6 (to see last modifaction of files)
+
+
+Using du and a awk statement like the one mentioned above will provide what you are looking for.
+
+Example: du /home/abc/Downloads/*.jpg | awk '{ print; total += $1 }; END { print "total size: ",total }'
+
+This will list all files in folder Downloads of user abc ending in .jpg and prints the sum of all these files at the end of the listing.
+
+#!/bin/sh
+du /home/vb237y/sopp2016r.01/routing/node/*.arc | awk '{ print; total += $1 }; END { print "total size: ",total }'
+
+
+
+List all .pdf files in directories
+
+find . -type f -iname '*.pdf'
+
+Q. print lines containing only numbers
+Hi boys,
+I have a txt file with a lot of lines.
+It have lines containing mostly only numbers but some of them contain numbers mixed with special characters and or letters or space..
+its look like this:
+
+Code:
+
+271261621371
+2727127f
+27126|71372.
+
+Code:
+ANS:-
+egrep -x '[0-9]+'
+
+Quote:
+egrep -v [a-zA-Z] <filename>
+
+Q. Converting multiple image files from JPEG to PDF format
+#!/bin/bash
+for f in *.jpg; do
+  convert ./"$f" ./"${f%.jpg}.pdf"
+done
+
+
+.......................................
+1. Count Total number of directories in directory.
+
+[vb237y@fldh032 shell_script]$ ls -l | grep "^d" |wc -l
+
+
+2.Count total number of words in a files.
+
+[vb237y@fldh032 shell_script]$ grep IBM vikash.txt |wc -l
+
+
+3. Print specific string(for Ex. :- Office_IBM, result should be only "IBM")
+
+[vb237y@fldh032 shell_script]$ cut -c8-10 cuttesting.txt
+
+4. Display the name and size of each "*.txt" file in current directory(-h show byte, kilobyte, megabyte, gigabyte, terabyte, )
+
+[vb237y@fldh032 shell_script]$ du -hc *.txt
+
+VI:- Search and replace command format :-
+
+%s/old-string/new-string/
+
+
+
+
